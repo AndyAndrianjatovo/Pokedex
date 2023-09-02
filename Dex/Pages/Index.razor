@@ -1,0 +1,16 @@
+﻿@page "/"
+@using Models
+@using Util
+@inject PokeClient client
+
+<h1>Hello, world!</h1>
+
+@code {
+    Pokemon pokemon = new Pokemon();
+
+    protected override async Task OnInitializedAsync()
+    {
+        pokemon = await client.GetPokemon("1");
+        Console.WriteLine(pokemon.name);
+    }
+}
