@@ -1,8 +1,9 @@
 ﻿@page "/pokemon/{pokemonId}"
 @inject PokeClient client
 
-<div class="container">
-    <div class="card">
+<div class="container mx-auto">
+    <a href="/">Retour</a>
+    <div class="card max-w-md">
         @if (@poke.types.Count > 0)
         {
             <div class="card-top" style="background-color: @PokeColor.GetTypeColor(@poke.types[0].type.name)">
@@ -36,12 +37,16 @@
                 {
                     <div class="stat-bar">
                         <h5 class="stat">@stat.stat.name: @stat.base_stat</h5>
-                        <div class="progress">
+
+                        <div class="w-full bg-white rounded-md">
+                            <div role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="200" class="text-xs font-medium text-center p-0.5 leading-none rounded-md" style="width: @stat.base_stat%;background-color: @PokeColor.GetStatColor(@stat.stat.name);min-height:1.5em;"></div>
+                        </div>
+                        @*<div class="progress">
                             <div class="progress-bar progress-bar-striped" role="progressbar"
                                  style="width: @stat.base_stat%; background-color: @PokeColor.GetStatColor(@stat.stat.name);"
                                  aria-valuenow="100" aria-valuemin="0" aria-valuemax="200">
                             </div>
-                        </div>
+                        </div>*@
                     </div>
                 }
             </div>
